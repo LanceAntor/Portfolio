@@ -141,8 +141,8 @@
 }
 
 .social-links img {
-  width: 70px;
-  height: 70px;
+  width: 73px;
+  height: 73px;
   filter: invert(0.8);
   transition: all 0.3s ease;
 }
@@ -171,7 +171,7 @@
   overflow: hidden;
   box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
   position: relative;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .profile-photo::before {
