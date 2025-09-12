@@ -291,6 +291,168 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Tech Stack Section */}
+      <section className="tech-stack-section">
+        <div className="tech-stack-container">
+          <h2 className="tech-stack-title">Tech Stack</h2>
+          <p className="tech-stack-subtitle">
+            The tools and technologies I use most often.
+          </p>
+          
+          <div className="tech-grid">
+            <div className="tech-item">
+              <div className="tech-icon html5">
+                <span className="tech-name">HTML5</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon css3">
+                <span className="tech-name">CSS3</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon javascript">
+                <span className="tech-name">JavaScript</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon typescript">
+                <span className="tech-name">TypeScript</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon react">
+                <span className="tech-name">React.js</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon nextjs">
+                <span className="tech-name">Next.js</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon tailwind">
+                <span className="tech-name">TailwindCSS</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon nodejs">
+                <span className="tech-name">Node.js</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon express">
+                <span className="tech-name">Express.js</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon nestjs">
+                <span className="tech-name">Nest.js</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon php">
+                <span className="tech-name">PHP</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon java">
+                <span className="tech-name">Java</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon python">
+                <span className="tech-name">Python</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon cpp">
+                <span className="tech-name">C++</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon c">
+                <span className="tech-name">C</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon ruby">
+                <span className="tech-name">Ruby</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon mongodb">
+                <span className="tech-name">MongoDB</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon postgresql">
+                <span className="tech-name">PostgreSQL</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon mysql">
+                <span className="tech-name">MySQL</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon git">
+                <span className="tech-name">Git</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon github">
+                <span className="tech-name">GitHub</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon docker">
+                <span className="tech-name">Docker</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon django">
+                <span className="tech-name">Django</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon postman">
+                <span className="tech-name">Postman</span>
+              </div>
+            </div>
+            
+            <div className="tech-item">
+              <div className="tech-icon insomnia">
+                <span className="tech-name">Insomnia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
