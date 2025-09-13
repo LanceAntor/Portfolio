@@ -1,4 +1,8 @@
 /* Global Styles */
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   background: #0a0a0a;
   margin: 0;
@@ -6,6 +10,11 @@ html, body {
   overflow-x: hidden;
   min-height: 100vh;
   font-family: 'VT323', monospace;
+}
+
+/* Section Styling for Navigation */
+section {
+  scroll-margin-top: 20px;
 }
 
 body {
@@ -75,6 +84,11 @@ body {
   background: rgba(255, 255, 255, 0.25);
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.nav-icon:active {
+  transform: translateY(0px);
+  background: rgba(0, 255, 65, 0.3);
 }
 
 .nav-icon img {

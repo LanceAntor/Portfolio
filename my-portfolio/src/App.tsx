@@ -9,10 +9,18 @@ function App() {
   return (
     <div className="portfolio-container">
       <ParticleBackground />
-      <HomePage />
-      <AboutMe />
-      <Projects />
-      <TechStack />
+      <section id="home">
+        <HomePage />
+      </section>
+      <section id="about">
+        <AboutMe />
+      </section>
+      <section id="projects">
+        <Projects />
+      </section>
+      <section id="skills">
+        <TechStack />
+      </section>
     </div>
   )
 }

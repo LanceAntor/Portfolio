@@ -19,6 +19,17 @@ const HomePage = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
   const homeRef = useRef<HTMLDivElement>(null);
 
+  // Navigation function to scroll to sections
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   // Intersection Observer for scroll animations
   useEffect(() => {
     const currentHomeRef = homeRef.current;
@@ -96,17 +107,18 @@ const HomePage = () => {
     <div className="portfolio-container" ref={homeRef}>
       {/* Navigation Header */}
       <nav className={`navigation ${animate ? 'animate-nav' : ''}`}>
-        <div className="nav-icon">
+        <div className="nav-icon" onClick={() => scrollToSection('home')}>
           <img src={homeIcon} alt="Home" />
         </div>
-        <div className="nav-icon">
+        <div className="nav-icon" onClick={() => scrollToSection('about')}>
           <img src={aboutIcon} alt="About" />
         </div>
-        <div className="nav-icon">
-          <img src={skillIcon} alt="Skills" />
-        </div>
-        <div className="nav-icon">
+        
+        <div className="nav-icon" onClick={() => scrollToSection('projects')}>
           <img src={projectIcon} alt="Projects" />
+        </div>
+        <div className="nav-icon" onClick={() => scrollToSection('skills')}>
+          <img src={skillIcon} alt="Skills" />
         </div>
         <div className="nav-icon">
           <img src={contactIcon} alt="Contact" />
