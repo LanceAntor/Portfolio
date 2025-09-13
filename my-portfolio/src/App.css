@@ -726,13 +726,77 @@ body {
   background: #2a2a3e;
   position: relative;
   border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+  overflow: hidden;
 }
 
-.project-placeholder {
-  font-family: 'VT323', monospace;
-  font-size: 1.8rem;
-  color: #00ff41;
-  text-align: center;
+.project-image-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.project-image-full:hover {
+  transform: scale(1.05);
+  transition: all 1s ease;
+}
+
+/* Video Preview and Play Button */
+.video-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.play-button-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-preview:hover .play-button-overlay {
+  opacity: 1;
+}
+
+.play-button {
+  width: 80px;
+  height: 80px;
+  background: rgba(0, 255, 65, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+}
+
+.play-button:hover {
+  background: #00ff41;
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.8);
+}
+
+.play-button svg {
+  margin-left: 4px; /* Slight offset to center the play icon visually */
+}
+
+/* Video Player */
+.project-video-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .project-info {

@@ -1,11 +1,15 @@
 import { useState, useEffect, useRef } from 'react'
 import githubIcon from '../assets/github_icon.png'
 import shareIcon from '../assets/share.png'
+import cerberunImage from '../assets/project_photos/cerberun_image.png'
+import cerberunVideo from '../assets/video/cerberun_video.mp4'
 
 const Projects = () => {
   const [currentSlide, setCurrentSlide] = useState(1); // Start with Cerberun (index 1)
   const [animate, setAnimate] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const projectsRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -35,12 +39,35 @@ const Projects = () => {
     };
   }, []);
 
+  const handlePlayVideo = () => {
+    setIsVideoPlaying(true);
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
+
+  const handleVideoEnd = () => {
+    setIsVideoPlaying(false);
+  };
+
   const nextSlide = () => {
     setCurrentSlide(prev => (prev + 1) % 4);
+    // Reset video state when changing slides
+    setIsVideoPlaying(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
   };
 
   const prevSlide = () => {
     setCurrentSlide(prev => (prev - 1 + 4) % 4);
+    // Reset video state when changing slides
+    setIsVideoPlaying(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
   };
 
   const getSlideClass = (index: number) => {
@@ -116,7 +143,27 @@ const Projects = () => {
           <div className={`project-slide ${getSlideClass(1)}`}>
             <div className="project-content">
               <div className="project-image">
-                <div className="project-placeholder">Cerberun Game</div>
+                {!isVideoPlaying ? (
+                  <div className="video-preview">
+                    <img src={cerberunImage} alt="Cerberun Game" className="project-image-full" />
+                    <div className="play-button-overlay" onClick={handlePlayVideo}>
+                      <div className="play-button">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <video 
+                    ref={videoRef}
+                    src={cerberunVideo}
+                    className="project-video-full"
+                    controls
+                    onEnded={handleVideoEnd}
+                    autoPlay
+                  />
+                )}
               </div>
               <div className="project-info">
                 <h3 className="project-name">Cerberun</h3>
@@ -131,7 +178,7 @@ const Projects = () => {
                 </div>
                 <div className="project-buttons">
                   <div className="github-icon">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/LanceAntor/Cerberun.git" target="_blank" rel="noopener noreferrer">
                       <img src={githubIcon} alt="GitHub" />
                     </a>
                   </div>
