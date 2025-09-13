@@ -1,7 +1,37 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const Projects = () => {
   const [currentSlide, setCurrentSlide] = useState(1); // Start with Cerberun (index 1)
+  const [animate, setAnimate] = useState(false);
+  const projectsRef = useRef<HTMLElement>(null);
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const currentProjectsRef = projectsRef.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimate(true);
+        } else {
+          setAnimate(false);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    );
+
+    if (currentProjectsRef) {
+      observer.observe(currentProjectsRef);
+    }
+
+    return () => {
+      if (currentProjectsRef) {
+        observer.unobserve(currentProjectsRef);
+      }
+    };
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide(prev => (prev + 1) % 4);
@@ -27,14 +57,14 @@ const Projects = () => {
   };
 
   return (
-    <section className="projects-section">
+    <section className="projects-section" ref={projectsRef}>
       <div className="projects-container">
-        <h2 className="projects-title">Projects</h2>
-        <p className="projects-subtitle">
+        <h2 className={`projects-title ${animate ? 'animate-projects-title' : ''}`}>Projects</h2>
+        <p className={`projects-subtitle ${animate ? 'animate-projects-subtitle' : ''}`}>
           Check out my code, play with the demos, and see what I've been working on!
         </p>
         
-        <div className="projects-gallery">
+        <div className={`projects-gallery ${animate ? 'animate-projects-gallery' : ''}`}>
           {/* Left Arrow Button */}
           <button className="nav-arrow nav-arrow-left" onClick={prevSlide}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">

@@ -1,4 +1,5 @@
 // React Icons for Tech Stack
+import { useState, useEffect, useRef } from "react";
 import { FaReact, FaNodeJs, FaPython, FaJava, FaGithub, FaPhp, FaHtml5, FaCss3Alt } from "react-icons/fa";
 import { SiNextdotjs, SiDjango, SiTailwindcss, SiCplusplus, SiC, SiTypescript, SiMysql, SiGit, SiPostman} from "react-icons/si";
 import { TbBrandJavascript } from "react-icons/tb";
@@ -25,22 +26,54 @@ const techs = [
 ];
 
 const TechStack = () => {
+  const [animate, setAnimate] = useState(false);
+  const techStackRef = useRef<HTMLElement>(null);
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const currentTechStackRef = techStackRef.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimate(true);
+        } else {
+          setAnimate(false);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    );
+
+    if (currentTechStackRef) {
+      observer.observe(currentTechStackRef);
+    }
+
+    return () => {
+      if (currentTechStackRef) {
+        observer.unobserve(currentTechStackRef);
+      }
+    };
+  }, []);
+
   const mainTechs = techs.slice(0, techs.length - 4);
   const bottomTechs = techs.slice(-4);
 
   return (
-    <section className="tech-stack-section">
+    <section className="tech-stack-section" ref={techStackRef}>
       <div className="tech-stack-container">
-        <h2 className="tech-stack-title">Tech Stack</h2>
-        <p className="tech-stack-subtitle">
+        <h2 className={`tech-stack-title ${animate ? 'animate-tech-title' : ''}`}>Tech Stack</h2>
+        <p className={`tech-stack-subtitle ${animate ? 'animate-tech-subtitle' : ''}`}>
           The tools and technologies I use most often.
         </p>
         
-        <div className="tech-grid">
-          {mainTechs.map((tech) => (
+        <div className={`tech-grid ${animate ? 'animate-tech-grid' : ''}`}>
+          {mainTechs.map((tech, index) => (
             <div
               key={tech.name}
-              className="tech-item"
+              className={`tech-item ${animate ? 'animate-tech-item' : ''}`}
+              style={{ animationDelay: animate ? `${index * 0.1}s` : '0s' }}
             >
               <div className="tech-icon">
                 <div className="tech-icon-content">
@@ -52,11 +85,12 @@ const TechStack = () => {
           ))}
         </div>
         
-        <div className="tech-grid-bottom">
-          {bottomTechs.map((tech) => (
+        <div className={`tech-grid-bottom ${animate ? 'animate-tech-grid-bottom' : ''}`}>
+          {bottomTechs.map((tech, index) => (
             <div
               key={tech.name}
-              className="tech-item"
+              className={`tech-item ${animate ? 'animate-tech-item' : ''}`}
+              style={{ animationDelay: animate ? `${(mainTechs.length + index) * 0.1}s` : '0s' }}
             >
               <div className="tech-icon">
                 <div className="tech-icon-content">
