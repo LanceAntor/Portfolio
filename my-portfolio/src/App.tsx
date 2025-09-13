@@ -12,6 +12,35 @@ import profilePhoto from './assets/me.png'
 import gameboyIcon from './assets/gameboy_icon.png'
 import EmojiIcon from './assets/emoji_icon.png'
 
+// React Icons for Tech Stack
+import { FaReact, FaNodeJs, FaPython, FaJava, FaGithub, FaPhp, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import { SiNextdotjs, SiDjango, SiTailwindcss, SiCplusplus, SiC, SiTypescript, SiMysql, SiGit, SiPostman} from "react-icons/si";
+import { TbBrandJavascript } from "react-icons/tb";
+
+const techs = [
+  { name: "HTML5", icon: <FaHtml5 style={{ color: '#E34F26' }} /> },
+  { name: "CSS3", icon: <FaCss3Alt style={{ color: '#1572B6' }} /> },
+  { name: "JavaScript", icon: <TbBrandJavascript style={{ color: '#F7DF1E' }} /> },
+  { name: "TypeScript", icon: <SiTypescript style={{ color: '#3178C6' }} /> },
+  { name: "React.js", icon: <FaReact style={{ color: '#61DAFB' }} /> },
+  { name: "Next.js", icon: <SiNextdotjs style={{ color: '#FFFFFF' }} /> },
+  { name: "TailwindCSS", icon: <SiTailwindcss style={{ color: '#38BDF8' }} /> },
+  { name: "Node.js", icon: <FaNodeJs style={{ color: '#339933' }} /> },
+  { name: "PHP", icon: <FaPhp style={{ color: '#777BB4' }} /> },
+  { name: "Java", icon: <FaJava style={{ color: '#007396' }} /> },
+  { name: "Python", icon: <FaPython style={{ color: '#3776AB' }} /> },
+  { name: "C++", icon: <SiCplusplus style={{ color: '#00599C' }} /> },
+  { name: "C", icon: <SiC style={{ color: '#A8B9CC' }} /> },
+  { name: "MySQL", icon: <SiMysql style={{ color: '#4479A1' }} /> },
+  { name: "Git", icon: <SiGit style={{ color: '#F05032' }} /> },
+  { name: "GitHub", icon: <FaGithub style={{ color: '#FFFFFF' }} /> },
+  { name: "Django", icon: <SiDjango style={{ color: '#092E20' }} /> },
+  { name: "Postman", icon: <SiPostman style={{ color: '#FF6C37' }} /> },
+];
+
+const mainTechs = techs.slice(0, techs.length - 4);
+const bottomTechs = techs.slice(-4);
+
 function App() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
@@ -301,155 +330,35 @@ function App() {
           </p>
           
           <div className="tech-grid">
-            <div className="tech-item">
-              <div className="tech-icon html5">
-                <span className="tech-name">HTML5</span>
+            {mainTechs.map((tech) => (
+              <div
+                key={tech.name}
+                className="tech-item"
+              >
+                <div className="tech-icon">
+                  <div className="tech-icon-content">
+                    {tech.icon}
+                  </div>
+                  <span className="tech-name">{tech.name}</span>
+                </div>
               </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon css3">
-                <span className="tech-name">CSS3</span>
+            ))}
+          </div>
+          
+          <div className="tech-grid-bottom">
+            {bottomTechs.map((tech) => (
+              <div
+                key={tech.name}
+                className="tech-item"
+              >
+                <div className="tech-icon">
+                  <div className="tech-icon-content">
+                    {tech.icon}
+                  </div>
+                  <span className="tech-name">{tech.name}</span>
+                </div>
               </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon javascript">
-                <span className="tech-name">JavaScript</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon typescript">
-                <span className="tech-name">TypeScript</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon react">
-                <span className="tech-name">React.js</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon nextjs">
-                <span className="tech-name">Next.js</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon tailwind">
-                <span className="tech-name">TailwindCSS</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon nodejs">
-                <span className="tech-name">Node.js</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon express">
-                <span className="tech-name">Express.js</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon nestjs">
-                <span className="tech-name">Nest.js</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon php">
-                <span className="tech-name">PHP</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon java">
-                <span className="tech-name">Java</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon python">
-                <span className="tech-name">Python</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon cpp">
-                <span className="tech-name">C++</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon c">
-                <span className="tech-name">C</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon ruby">
-                <span className="tech-name">Ruby</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon mongodb">
-                <span className="tech-name">MongoDB</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon postgresql">
-                <span className="tech-name">PostgreSQL</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon mysql">
-                <span className="tech-name">MySQL</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon git">
-                <span className="tech-name">Git</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon github">
-                <span className="tech-name">GitHub</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon docker">
-                <span className="tech-name">Docker</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon django">
-                <span className="tech-name">Django</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon postman">
-                <span className="tech-name">Postman</span>
-              </div>
-            </div>
-            
-            <div className="tech-item">
-              <div className="tech-icon insomnia">
-                <span className="tech-name">Insomnia</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
