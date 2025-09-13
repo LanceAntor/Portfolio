@@ -1039,7 +1039,7 @@
 }
 
 .tech-stack-container {
-  max-width: 1100px;
+  max-width: 1050px;
   width: 100%;
   padding: 0 80px;
   text-align: center;
@@ -1049,7 +1049,6 @@
   font-family: 'VT323', monospace;
   font-size: 4rem;
   font-weight: normal;
-  margin: 0 0 20px 0;
   color: #00ff41;
   text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
   letter-spacing: 2px;
@@ -1059,22 +1058,22 @@
   font-family: 'VT323', monospace;
   font-size: 1.4rem;
   color: #e0e0e0;
-  margin: 0 0 60px 0;
+  margin: 0 0 20px 0;
   letter-spacing: 1px;
 }
 
 .tech-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
+  gap: 11px;
   margin: 0 auto;
 }
 
 .tech-grid-bottom {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin: 20px auto 0;
+  gap: 12px;
+  margin: 12px auto 0;
 }
 
 .tech-item {
@@ -1083,6 +1082,7 @@
   align-items: center;
   transition: all 0.3s ease;
   cursor: pointer;
+  
 }
 
 .tech-item:hover {
@@ -1093,7 +1093,7 @@
   width: 120px;
   height: 120px;
   background: linear-gradient(135deg, #1a1a2e, #16213e);
-  border: 2px solid rgba(0, 255, 65, 0.2);
+  box-shadow: 1px 2px 1px rgba(1, 128, 33, 0.4);
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -1107,7 +1107,6 @@
   overflow: hidden;
   text-align: center;
   padding: 10px;
-  box-sizing: border-box;
 }
 
 .tech-icon-content {
@@ -1116,7 +1115,7 @@
 }
 
 .tech-item:hover .tech-icon-content {
-  transform: scale(1.25) rotate(-6deg);
+  transform: scale(1.5) ;
 }
 
 .tech-item:hover .tech-icon {
@@ -1126,21 +1125,12 @@
 
 .tech-name {
   font-family: 'VT323', monospace;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: #e0e0e0;
   letter-spacing: 1px;
   transition: color 0.3s ease;
   line-height: 1.2;
   margin-top: -10px;
-}
-
-.tech-name {
-  font-family: 'VT323', monospace;
-  font-size: 1rem;
-  color: #e0e0e0;
-  letter-spacing: 1px;
-  transition: color 0.3s ease;
-  line-height: 1.2;
 }
 
 .tech-item:hover .tech-name {
