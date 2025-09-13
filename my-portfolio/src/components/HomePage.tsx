@@ -7,7 +7,7 @@ import contactIcon from '../assets/contact_icon.png'
 import linkedinIcon from '../assets/linkedin_icon.png'
 import githubIcon from '../assets/github_icon.png'
 import facebookIcon from '../assets/facebook_icon.png'
-import profilePhoto from '../assets/me.png'
+import profilePhoto from '../assets/m2.jpg'
 import gameboyIcon from '../assets/gameboy_icon.png'
 
 const HomePage = () => {
