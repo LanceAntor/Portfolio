@@ -29,7 +29,7 @@ const ParticleBackground = () => {
       options={{
         background: {
           color: {
-            value: 'transparent'
+            value: '#0D0D0D)'
           }
         },
         fpsLimit: 120,
@@ -57,10 +57,10 @@ const ParticleBackground = () => {
         },
         particles: {
           color: {
-            value: ['#00ff41', '#00bfff', '#ff0080', '#ffff00', '#ff6600', '#8000ff']
+            value: ['#a5a5a5ff']
           },
           links: {
-            color: '#00ff41',
+            color: '#c9c9c9ff',
             distance: 150,
             enable: true,
             opacity: 0.3,
@@ -81,10 +81,10 @@ const ParticleBackground = () => {
               enable: true,
               area: 800
             },
-            value: 80
+            value: 60
           },
           opacity: {
-            value: 0.7,
+            value: 0.9,
             animation: {
               enable: true,
               speed: 1,
@@ -99,7 +99,7 @@ const ParticleBackground = () => {
             value: { min: 1, max: 5 },
             animation: {
               enable: true,
-              speed: 2,
+              speed: 0.5,
               minimumValue: 0.1,
               sync: false
             }

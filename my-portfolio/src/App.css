@@ -55,6 +55,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-top: 0;
+  margin-bottom: 90px;
 }
 
 .nav-icon {
@@ -1052,6 +1053,7 @@ body {
 
 /* Tech Stack Section */
 .tech-stack-section {
+  margin-top: 100px;
   min-height: 110vh;
   background: transparent;
   display: flex;
