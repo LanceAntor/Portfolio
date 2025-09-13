@@ -3,13 +3,15 @@ import githubIcon from '../assets/github_icon.png'
 import shareIcon from '../assets/share.png'
 import cerberunImage from '../assets/project_photos/cerberun_image.png'
 import cerberunVideo from '../assets/video/cerberun_video.mp4'
+import echodotsImage from '../assets/project_photos/echodots.png'
+import echodotsVideo from '../assets/video/echodots_vid.mp4'
 
 const Projects = () => {
   const [currentSlide, setCurrentSlide] = useState(1); // Start with Cerberun (index 1)
   const [animate, setAnimate] = useState(false);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [videoStates, setVideoStates] = useState<{[key: number]: boolean}>({});
   const projectsRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRefs = useRef<{[key: number]: HTMLVideoElement | null}>({});
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -39,35 +41,39 @@ const Projects = () => {
     };
   }, []);
 
-  const handlePlayVideo = () => {
-    setIsVideoPlaying(true);
-    if (videoRef.current) {
-      videoRef.current.play();
+  const handlePlayVideo = (projectIndex: number) => {
+    setVideoStates(prev => ({ ...prev, [projectIndex]: true }));
+    if (videoRefs.current[projectIndex]) {
+      videoRefs.current[projectIndex]?.play();
     }
   };
 
-  const handleVideoEnd = () => {
-    setIsVideoPlaying(false);
+  const handleVideoEnd = (projectIndex: number) => {
+    setVideoStates(prev => ({ ...prev, [projectIndex]: false }));
   };
 
   const nextSlide = () => {
     setCurrentSlide(prev => (prev + 1) % 4);
-    // Reset video state when changing slides
-    setIsVideoPlaying(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
+    // Reset all video states when changing slides
+    setVideoStates({});
+    Object.values(videoRefs.current).forEach(videoRef => {
+      if (videoRef) {
+        videoRef.pause();
+        videoRef.currentTime = 0;
+      }
+    });
   };
 
   const prevSlide = () => {
     setCurrentSlide(prev => (prev - 1 + 4) % 4);
-    // Reset video state when changing slides
-    setIsVideoPlaying(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
+    // Reset all video states when changing slides
+    setVideoStates({});
+    Object.values(videoRefs.current).forEach(videoRef => {
+      if (videoRef) {
+        videoRef.pause();
+        videoRef.currentTime = 0;
+      }
+    });
   };
 
   const getSlideClass = (index: number) => {
@@ -111,28 +117,54 @@ const Projects = () => {
           <div className={`project-slide ${getSlideClass(0)}`}>
             <div className="project-content">
               <div className="project-image">
-                <div className="project-placeholder">Project 1 Image</div>
+                {!videoStates[0] ? (
+                  <div className="video-preview">
+                    <img src={echodotsImage} alt="Ecodots" className="project-image-full" />
+                    <div className="play-button-overlay" onClick={() => handlePlayVideo(0)}>
+                      <div className="play-button">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <video 
+                    ref={(el) => { videoRefs.current[0] = el; }}
+                    src={echodotsVideo}
+                    className="project-video-full"
+                    controls
+                    onEnded={() => handleVideoEnd(0)}
+                    autoPlay
+                  />
+                )}
               </div>
               <div className="project-info">
-                <h3 className="project-name">Project One</h3>
+                <h3 className="project-name">EchoDots</h3>
                 <p className="project-description">
-                  Description for project one will go here. This is a sample project description.
+                  Echo Dots is a morse code game where players decode signals, race against time, and sharpen their skills. Featuring dynamic difficulty and multiple game modes, it’s built for both casual learners and competitive codebreakers.
                 </p>
                 <div className="project-tech">
                   <span className="tech-tag">React</span>
-                  <span className="tech-tag">JavaScript</span>
+                  <span className="tech-tag">Typescript</span>
                   <span className="tech-tag">CSS</span>
+                  <span className="tech-tag">Tailwind</span>
                 </div>
                 <div className="project-buttons">
                    <div className="github-icon">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/LanceAntor/EchoDots.git" target="_blank" rel="noopener noreferrer">
                       <img src={githubIcon} alt="GitHub" />
                     </a>
                   </div>
                    <button className="btn-demo">Demo
                     <img src={shareIcon} alt="Share" />
                   </button>
-                  <button className="btn-code">Try It
+                  
+                  <button
+                    className="btn-code"
+                    onClick={() => window.open('https://echodots.vercel.app/', '_blank')}
+                  >
+                    Try It
                     <img src={shareIcon} alt="Share" />
                   </button>
                 </div>
@@ -143,10 +175,10 @@ const Projects = () => {
           <div className={`project-slide ${getSlideClass(1)}`}>
             <div className="project-content">
               <div className="project-image">
-                {!isVideoPlaying ? (
+                {!videoStates[1] ? (
                   <div className="video-preview">
                     <img src={cerberunImage} alt="Cerberun Game" className="project-image-full" />
-                    <div className="play-button-overlay" onClick={handlePlayVideo}>
+                    <div className="play-button-overlay" onClick={() => handlePlayVideo(1)}>
                       <div className="play-button">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M8 5v14l11-7z"/>
@@ -156,11 +188,11 @@ const Projects = () => {
                   </div>
                 ) : (
                   <video 
-                    ref={videoRef}
+                    ref={(el) => { videoRefs.current[1] = el; }}
                     src={cerberunVideo}
                     className="project-video-full"
                     controls
-                    onEnded={handleVideoEnd}
+                    onEnded={() => handleVideoEnd(1)}
                     autoPlay
                   />
                 )}
@@ -185,7 +217,11 @@ const Projects = () => {
                    <button className="btn-demo">Demo
                     <img src={shareIcon} alt="Share" />
                   </button>
-                  <button className="btn-code">Try It
+                  <button
+                    className="btn-code"
+                    onClick={() => window.open('https://cerberun25.vercel.app/', '_blank')}
+                  >
+                    Try It
                     <img src={shareIcon} alt="Share" />
                   </button>
                 </div>
