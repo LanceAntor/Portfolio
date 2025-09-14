@@ -140,10 +140,10 @@ const HomePage = () => {
           
           {/* Social Media Links */}
           <div className={`social-links ${animate ? 'animate-social' : ''}`}>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/lynnon-lance-antor-045649359/" target="_blank" rel="noopener noreferrer">
               <img src={linkedinIcon} alt="LinkedIn" />
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/LanceAntor" target="_blank" rel="noopener noreferrer">
               <img src={githubIcon} alt="GitHub" />
             </a>
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
