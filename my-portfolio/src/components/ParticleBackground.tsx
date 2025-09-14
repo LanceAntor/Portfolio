@@ -91,7 +91,7 @@ const ParticleBackground = () => {
               enable: true,
               width: 1000
             },
-            value: 80
+            value: 70
           },
           opacity: {
             value: 0.9,

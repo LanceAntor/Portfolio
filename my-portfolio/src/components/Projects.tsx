@@ -9,6 +9,8 @@ import signpopImage from '../assets/project_photos/signpop.png'
 import signpopVideo from '../assets/video/signpop_video.mp4'
 import kuripothubImage from '../assets/project_photos/kuripot.png'
 import kuripothubVideo from '../assets/video/kuripot_video.mp4'
+import dlabImage from '../assets/project_photos/dlab.png'
+import dlabVideo from '../assets/video/dlab_video.mp4'
 
 const Projects = () => {
   const [currentSlide, setCurrentSlide] = useState(1); // Start with Cerberun (index 1)
@@ -57,7 +59,7 @@ const Projects = () => {
   };
 
   const nextSlide = () => {
-    setCurrentSlide(prev => (prev + 1) % 4);
+    setCurrentSlide(prev => (prev + 1) % 6);
     // Reset all video states when changing slides
     setVideoStates({});
     Object.values(videoRefs.current).forEach(videoRef => {
@@ -69,7 +71,7 @@ const Projects = () => {
   };
 
   const prevSlide = () => {
-    setCurrentSlide(prev => (prev - 1 + 4) % 4);
+    setCurrentSlide(prev => (prev - 1 + 6) % 6);
     // Reset all video states when changing slides
     setVideoStates({});
     Object.values(videoRefs.current).forEach(videoRef => {
@@ -81,7 +83,7 @@ const Projects = () => {
   };
 
   const getSlideClass = (index: number) => {
-    const totalSlides = 4;
+    const totalSlides = 6;
     
     if (index === currentSlide) return 'active';
     
@@ -320,8 +322,93 @@ const Projects = () => {
                 
               </div>
             </div>
-          
           </div>
+
+          {/* Project 5 Template */}
+          <div className={`project-slide ${getSlideClass(4)}`}>
+            <div className="project-content">
+              <div className="project-image">
+                {!videoStates[4] ? (
+                  <div className="video-preview">
+                    <img src={dlabImage} alt="DLab" className="project-image-full" />
+                    <div className="play-button-overlay" onClick={() => handlePlayVideo(4)}>
+                      <div className="play-button">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <video 
+                    ref={(el) => { videoRefs.current[4] = el; }}
+                    src={dlabVideo}
+                    className="project-video-full"
+                    controls
+                    onEnded={() => handleVideoEnd(4)}
+                    autoPlay
+                  />
+                )}
+              </div>
+              <div className="project-info">
+                <h3 className="project-name">Dlab</h3>
+                <p className="project-description">
+                  DLab is a comprehensive full-stack application demonstrating modern web development techniques with React frontend and Node.js backend. This project showcases advanced development patterns, API integration, and real-time data processing in a educational context.
+                </p>
+                <div className="project-tech">
+                  <span className="tech-tag">Typescript</span>
+                  <span className="tech-tag">Node.js</span>
+                  <span className="tech-tag">Express.js</span>
+                  <span className="tech-tag">React</span>
+                </div>
+                <div className="project-buttons">
+                   <div className="github-icon">
+                    <a href="https://github.com/LanceAntor/DLab.git" target="_blank" rel="noopener noreferrer">
+                      <img src={githubIcon} alt="GitHub" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Project 6 Template */}
+          <div className={`project-slide ${getSlideClass(5)}`}>
+            <div className="project-content">
+              <div className="project-image">
+                <div className="project-placeholder">
+                  <h3 style={{ color: '#00ff41', fontSize: '2rem', margin: 0 }}>Project 6</h3>
+                  <p style={{ color: '#e0e0e0', fontSize: '1.2rem', margin: '10px 0' }}>Coming Soon</p>
+                </div>
+              </div>
+              <div className="project-info">
+                <h3 className="project-name">Project Six</h3>
+                <p className="project-description">
+                  Another template for your future project. This could be a web application, mobile app, or any other software project you're working on. Update the technologies and links when you're ready.
+                </p>
+                <div className="project-tech">
+                  <span className="tech-tag">Python</span>
+                  <span className="tech-tag">Django</span>
+                  <span className="tech-tag">PostgreSQL</span>
+                </div>
+                <div className="project-buttons">
+                  <div className="github-icon">
+                    <a href="https://github.com/LanceAntor" target="_blank" rel="noopener noreferrer">
+                      <img src={githubIcon} alt="GitHub" />
+                    </a>
+                  </div>
+                  <button
+                    className="btn-code"
+                    onClick={() => window.open('#', '_blank')}
+                  >
+                    Try It
+                    <img src={shareIcon} alt="Share" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
