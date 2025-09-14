@@ -7,6 +7,8 @@ import echodotsImage from '../assets/project_photos/echodots.png'
 import echodotsVideo from '../assets/video/echodots_vid.mp4'
 import signpopImage from '../assets/project_photos/signpop.png'
 import signpopVideo from '../assets/video/signpop_video.mp4'
+import kuripothubImage from '../assets/project_photos/kuripot.png'
+import kuripothubVideo from '../assets/video/kuripot_video.mp4'
 
 const Projects = () => {
   const [currentSlide, setCurrentSlide] = useState(1); // Start with Cerberun (index 1)
@@ -273,31 +275,52 @@ const Projects = () => {
 
           <div className={`project-slide ${getSlideClass(3)}`}>
             <div className="project-content">
-              <div className="project-image">
-                <div className="project-placeholder">Project 4 Image</div>
+              <div className="project-image mobile-app-video">
+                {!videoStates[3] ? (
+                  <div className="video-preview mobile-video-preview">
+                    <img src={kuripothubImage} alt="Kuripot Hub" className="project-image-full" />
+                    <div className="play-button-overlay" onClick={() => handlePlayVideo(3)}>
+                      <div className="play-button">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="mobile-video-container">
+                    <video 
+                      ref={(el) => { videoRefs.current[3] = el; }}
+                      src={kuripothubVideo}
+                      className="project-video-mobile"
+                      controls
+                      onEnded={() => handleVideoEnd(3)}
+                      autoPlay
+                    />
+                  </div>
+                )}
               </div>
               <div className="project-info">
-                <h3 className="project-name">Project Four</h3>
+                <h3 className="project-name">KuripotHub</h3>
                 <p className="project-description">
-                  Description for project four will go here. This is yet another sample project.
-                </p>
+                  KuripotHub is a comprehensive personal finance management app designed to help users track their weekly expenses, manage budgets, and develop healthy spending habits. Whether you're looking to control your daily spending or build long-term financial discipline, this app offers an intuitive and feature-rich experience with real-time budget tracking, customizable preferences, and detailed expense analytics.                </p>
                 <div className="project-tech">
-                  <span className="tech-tag">Python</span>
-                  <span className="tech-tag">Django</span>
-                  <span className="tech-tag">PostgreSQL</span>
+                  <span className="tech-tag">Android</span>
+                  <span className="tech-tag">Java</span>
+                  <span className="tech-tag">Firebase</span>
+                  <span className="tech-tag">XML</span>
                 </div>
                 <div className="project-buttons">
                    <div className="github-icon">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/LanceAntor/KuripotHub.git" target="_blank" rel="noopener noreferrer">
                       <img src={githubIcon} alt="GitHub" />
                     </a>
                   </div>
-                  <button className="btn-code">Try It
-                     <img src={shareIcon} alt="Share" />
-                  </button>
                 </div>
+                
               </div>
             </div>
+          
           </div>
         </div>
       </div>
