@@ -46,7 +46,7 @@ const AboutMe = () => {
   useEffect(() => {
     const slideTimer = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % slides.length);
-    }, 5000);
+    }, 8000);
 
     return () => clearInterval(slideTimer);
   }, [slides.length]);
