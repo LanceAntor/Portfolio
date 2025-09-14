@@ -1,13 +1,20 @@
 import { useState, useEffect, useRef } from 'react'
-import profilePhoto from '../assets/me.png'
 import linkedinIcon from '../assets/linkedin_icon.png'
 import githubIcon from '../assets/github_icon.png'
 import facebookIcon from '../assets/facebook_icon.png'
 import EmojiIcon from '../assets/emoji_icon.png'
+import profileImage from '../assets/me.png'
+import slide1 from '../assets/slides/slide1.jpg'
+import slide2 from '../assets/slides/slide2.jpg'
+import slide3 from '../assets/slides/slide3.jpg'
+import slide4 from '../assets/slides/slide4.jpg'
 
 const AboutMe = () => {
   const [animate, setAnimate] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const aboutRef = useRef<HTMLElement>(null);
+
+  const slides = [profileImage,slide1, slide2, slide3, slide4];
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -37,13 +44,39 @@ const AboutMe = () => {
     };
   }, []);
 
+  // Slideshow timer
+  useEffect(() => {
+    const slideTimer = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(slideTimer);
+  }, [slides.length]);
+
   return (
     <section className="about-section" ref={aboutRef}>
       <div className="about-container">
         {/* Left Side - Profile Photo */}
         <div className={`about-photo-section ${animate ? 'animate-about-photo' : ''}`}>
           <div className="about-profile-photo">
-            <img src={profilePhoto} alt="Lynnon Lance Antor" />
+            <div className="slideshow-container">
+              {slides.map((slide, index) => (
+                <img 
+                  key={index}
+                  src={slide} 
+                  alt={`Slide ${index + 1}`}
+                  className={`slideshow-image ${index === currentSlide ? 'active' : ''}`}
+                />
+              ))}
+              <div className="slideshow-indicators">
+                {slides.map((_, index) => (
+                  <span 
+                    key={index}
+                    className={`indicator ${index === currentSlide ? 'active' : ''}`}
+                  ></span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
