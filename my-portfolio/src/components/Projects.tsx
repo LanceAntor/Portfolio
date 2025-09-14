@@ -5,6 +5,8 @@ import cerberunImage from '../assets/project_photos/cerberun_image.png'
 import cerberunVideo from '../assets/video/cerberun_video.mp4'
 import echodotsImage from '../assets/project_photos/echodots.png'
 import echodotsVideo from '../assets/video/echodots_vid.mp4'
+import signpopImage from '../assets/project_photos/signpop.png'
+import signpopVideo from '../assets/video/signpop_video.mp4'
 
 const Projects = () => {
   const [currentSlide, setCurrentSlide] = useState(1); // Start with Cerberun (index 1)
@@ -156,9 +158,6 @@ const Projects = () => {
                       <img src={githubIcon} alt="GitHub" />
                     </a>
                   </div>
-                   <button className="btn-demo">Demo
-                    <img src={shareIcon} alt="Share" />
-                  </button>
                   
                   <button
                     className="btn-code"
@@ -214,9 +213,6 @@ const Projects = () => {
                       <img src={githubIcon} alt="GitHub" />
                     </a>
                   </div>
-                   <button className="btn-demo">Demo
-                    <img src={shareIcon} alt="Share" />
-                  </button>
                   <button
                     className="btn-code"
                     onClick={() => window.open('https://cerberun25.vercel.app/', '_blank')}
@@ -232,30 +228,44 @@ const Projects = () => {
           <div className={`project-slide ${getSlideClass(2)}`}>
             <div className="project-content">
               <div className="project-image">
-                <div className="project-placeholder">Project 3 Image</div>
+                {!videoStates[2] ? (
+                  <div className="video-preview">
+                    <img src={signpopImage} alt="SignPop" className="project-image-full" />
+                    <div className="play-button-overlay" onClick={() => handlePlayVideo(2)}>
+                      <div className="play-button">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <video 
+                    ref={(el) => { videoRefs.current[2] = el; }}
+                    src={signpopVideo}
+                    className="project-video-full"
+                    controls
+                    onEnded={() => handleVideoEnd(2)}
+                    autoPlay
+                  />
+                )}
               </div>
               <div className="project-info">
-                <h3 className="project-name">Project Three</h3>
+                <h3 className="project-name">SignPop</h3>
                 <p className="project-description">
-                  Description for project three will go here. This is another sample project.
+                 SignPop is an engaging and interactive learning app designed to help users master the American Sign Language (ASL) alphabet. Whether you're a beginner or looking to reinforce your skills, this app offers a fun and educational experience through step-by-step tutorials, visual demonstrations, and an exciting game mode to test your knowledge.
                 </p>
                 <div className="project-tech">
-                  <span className="tech-tag">Vue</span>
-                  <span className="tech-tag">TypeScript</span>
-                  <span className="tech-tag">Node.js</span>
+                  <span className="tech-tag">Python</span>
+                  <span className="tech-tag">Flask</span>
+                  <span className="tech-tag">Artificial Intelligence</span>
                 </div>
                 <div className="project-buttons">
                    <div className="github-icon">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/LanceAntor/SignPop.git" target="_blank" rel="noopener noreferrer">
                       <img src={githubIcon} alt="GitHub" />
                     </a>
                   </div>
-                   <button className="btn-demo">Demo
-                    <img src={shareIcon} alt="Share" />
-                  </button>
-                  <button className="btn-code">Try It
-                     <img src={shareIcon} alt="Share" />
-                  </button>
                 </div>
               </div>
             </div>
@@ -282,9 +292,6 @@ const Projects = () => {
                       <img src={githubIcon} alt="GitHub" />
                     </a>
                   </div>
-                  <button className="btn-demo">Demo
-                    <img src={shareIcon} alt="Share" />
-                  </button>
                   <button className="btn-code">Try It
                      <img src={shareIcon} alt="Share" />
                   </button>
