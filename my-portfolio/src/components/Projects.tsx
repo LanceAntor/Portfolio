@@ -11,6 +11,8 @@ import kuripothubImage from '../assets/project_photos/kuripot.png'
 import kuripothubVideo from '../assets/video/kuripot_video.mp4'
 import dlabImage from '../assets/project_photos/dlab.png'
 import dlabVideo from '../assets/video/dlab_video.mp4'
+import booksmithImage from '../assets/project_photos/booksmith_pic.png'
+import booksmithVideo from '../assets/video/booksmith_video.mp4'
 
 const Projects = () => {
   const [currentSlide, setCurrentSlide] = useState(1); // Start with Cerberun (index 1)
@@ -376,34 +378,45 @@ const Projects = () => {
           <div className={`project-slide ${getSlideClass(5)}`}>
             <div className="project-content">
               <div className="project-image">
-                <div className="project-placeholder">
-                  <h3 style={{ color: '#00ff41', fontSize: '2rem', margin: 0 }}>Project 6</h3>
-                  <p style={{ color: '#e0e0e0', fontSize: '1.2rem', margin: '10px 0' }}>Coming Soon</p>
-                </div>
+                {!videoStates[5] ? (
+                  <div className="video-preview">
+                    <img src={booksmithImage} alt="BookSmith" className="project-image-full" />
+                    <div className="play-button-overlay" onClick={() => handlePlayVideo(5)}>
+                      <div className="play-button">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <video 
+                    ref={(el) => { videoRefs.current[5] = el; }}
+                    src={booksmithVideo}
+                    className="project-video-full"
+                    controls
+                    onEnded={() => handleVideoEnd(5)}
+                    autoPlay
+                  />
+                )}
               </div>
               <div className="project-info">
-                <h3 className="project-name">Project Six</h3>
+                <h3 className="project-name">BookSmith</h3>
                 <p className="project-description">
-                  Another template for your future project. This could be a web application, mobile app, or any other software project you're working on. Update the technologies and links when you're ready.
+                  BookSmith is a comprehensive platform that brings book enthusiasts together, offering an extensive library of books, review functionalities, and personalized recommendations. The platform is designed to cater to a wide audience with diverse reading preferences, ensuring an intuitive and seamless user experience.
                 </p>
                 <div className="project-tech">
                   <span className="tech-tag">Python</span>
                   <span className="tech-tag">Django</span>
-                  <span className="tech-tag">PostgreSQL</span>
+                  <span className="tech-tag">SQL-lite</span>
+                  <span className="tech-tag">Jquery</span>
                 </div>
                 <div className="project-buttons">
-                  <div className="github-icon">
-                    <a href="https://github.com/LanceAntor" target="_blank" rel="noopener noreferrer">
+                   <div className="github-icon">
+                    <a href="https://github.com/ParantarUrielAlexis/Booksmith.git" target="_blank" rel="noopener noreferrer">
                       <img src={githubIcon} alt="GitHub" />
                     </a>
                   </div>
-                  <button
-                    className="btn-code"
-                    onClick={() => window.open('#', '_blank')}
-                  >
-                    Try It
-                    <img src={shareIcon} alt="Share" />
-                  </button>
                 </div>
               </div>
             </div>
