@@ -403,10 +403,10 @@ body {
   height: 400px;
   border-radius: 50%;
   border: 2px solid #C0C0C0;
-  overflow: hidden;
   box-shadow: 0 0 40px rgba(249, 249, 249, 0.3);
+  overflow: hidden;
   position: relative;
-  filter: grayscale(60%);
+  filter: grayscale(40%);
 }
 
 .profile-photo::before {
@@ -464,14 +464,14 @@ body {
 }
 
 .about-profile-photo {
-  width: 480px;
-  height: 650px;
+  width: 500px;
+  height: 630px;
   border-radius: 20px;
-  border: 3px solid #00ff41;
   overflow: hidden;
-  box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+  border: 3px solid #30d538;
+  box-shadow: 0 0 40px rgba(2, 208, 19, 0.3);
   position: relative;
-  margin-left: -70px;
+  margin-left: -50px;
 }
 
 .about-profile-photo::before {
@@ -481,7 +481,7 @@ body {
   left: -3px;
   right: -3px;
   bottom: -3px;
-  background: linear-gradient(45deg, #00ff41, #00cc33, #00ff41);
+  background: linear-gradient(45deg, #939393, #ababab, #8b8b8b);
   border-radius: 20px;
   z-index: -1;
   animation: glow 2s ease-in-out infinite alternate;
@@ -511,7 +511,8 @@ body {
   top: 0;
   left: 0;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 1.5s ease-in-out;
+  filter: grayscale(60%);
 }
 
 .slideshow-image.active {
@@ -540,8 +541,8 @@ body {
 }
 
 .indicator.active {
-  background: #00ff41;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(132, 132, 132, 0.5);
   transform: scale(1.2);
 }
 
