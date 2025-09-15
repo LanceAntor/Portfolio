@@ -120,7 +120,7 @@ const HomePage = () => {
         <div className="nav-icon" onClick={() => scrollToSection('skills')}>
           <img src={skillIcon} alt="Skills" />
         </div>
-        <div className="nav-icon">
+        <div className="nav-icon" onClick={() => scrollToSection('contact')}>
           <img src={contactIcon} alt="Contact" />
         </div>
       </nav>

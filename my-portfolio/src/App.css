@@ -464,14 +464,13 @@ body {
 }
 
 .about-profile-photo {
-  width: 500px;
+  width: 450px;
   height: 630px;
   border-radius: 20px;
   overflow: hidden;
   border: 3px solid #30d538;
   box-shadow: 0 0 40px rgba(2, 208, 19, 0.3);
   position: relative;
-  margin-left: -50px;
 }
 
 .about-profile-photo::before {
@@ -1842,9 +1841,9 @@ body {
 /* Submit Button */
 .submit-button {
   font-family: 'VT323', monospace;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: bold;
-  padding: 18px 40px;
+  padding: 12px 25px;
   background: #00ff41;
   color: #000;
   border: none;
