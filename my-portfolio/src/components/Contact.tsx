@@ -1,6 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
+import emailjs from '@emailjs/browser'
+import { EMAILJS_CONFIG } from '../config/emailjs'
+
 const Contact = () => {
   const [animate, setAnimate] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -44,11 +49,75 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // You can add email service integration here
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      
+      const USE_EMAILJS = true; 
+      
+      if (USE_EMAILJS) {
+        const result = await emailjs.send(
+          EMAILJS_CONFIG.SERVICE_ID,    
+          EMAILJS_CONFIG.TEMPLATE_ID,   
+          {
+            name: formData.name,              
+            email: formData.email,
+            message: formData.message,
+            time: new Date().toLocaleString(),
+          },
+          EMAILJS_CONFIG.PUBLIC_KEY     
+        );
+        
+        if (result.text === 'OK') {
+          setFormData({ name: '', email: '', message: '' });
+          setSubmitStatus('success');
+        } else {
+          throw new Error('Failed to send email');
+        }
+      } else {
+        const subject = `Portfolio Contact Form - Message from ${formData.name}`;
+        const body = `Name: ${formData.name}
+Email: ${formData.email}
+
+Message:
+${formData.message}
+
+---
+This message was sent from your portfolio contact form.`;
+        
+        const mailtoLink = `mailto:lance.antor@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        // Open the email client
+        window.open(mailtoLink, '_blank');
+
+        // Reset form and show success message
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        });
+        setSubmitStatus('success');
+      }
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
+
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus('error');
+      
+      // Reset error message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -109,10 +178,24 @@ const Contact = () => {
 
             <button 
               type="submit" 
-              className={`submit-button ${animate ? 'animate-submit-button' : ''}`}
+              className={`submit-button ${animate ? 'animate-submit-button' : ''} ${isSubmitting ? 'loading' : ''}`}
+              disabled={isSubmitting}
             >
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
+
+            {/* Status Messages */}
+            {submitStatus === 'success' && (
+              <div className="status-message success-message">
+                Message sent successfully! I'll get back to you soon.
+              </div>
+            )}
+            
+            {submitStatus === 'error' && (
+              <div className="status-message error-message">
+                Error sending message. Please try again or contact me directly at lance.antor@gmail.com
+              </div>
+            )}
           </form>
         </div>
       </div>

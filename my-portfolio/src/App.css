@@ -1863,6 +1863,64 @@ body {
   transform: translateY(-3px);
 }
 
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-button.loading {
+  background: #00cc33;
+  animation: buttonPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
+  }
+}
+
+/* Status Messages */
+.status-message {
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+  animation: messageSlideIn 0.5s ease-out;
+}
+
+@keyframes messageSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.success-message {
+  background: rgba(0, 255, 65, 0.1);
+  border: 2px solid rgba(0, 255, 65, 0.3);
+  color: #00ff41;
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+}
+
+.error-message {
+  background: rgba(255, 65, 65, 0.1);
+  border: 2px solid rgba(255, 65, 65, 0.3);
+  color: #ff4141;
+  box-shadow: 0 0 15px rgba(255, 65, 65, 0.2);
+}
 
 /* Retro Gaming Elements */
 .gaming-decoration {
@@ -2001,6 +2059,12 @@ body {
     font-size: 1.5rem;
     padding: 15px 30px;
     min-width: 180px;
+  }
+  
+  .status-message {
+    font-size: 1rem;
+    padding: 12px 15px;
+    margin-top: 15px;
   }
   
   .gaming-decoration {
