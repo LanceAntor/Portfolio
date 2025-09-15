@@ -29,3 +29,6 @@ dist-ssr
 .env.development.local
 .env.test.local
 .env.production.local
+
+SPAM_PREVENTION.md
+EMAILJS_SETUP.md

@@ -5,12 +5,18 @@ import { EMAILJS_CONFIG } from '../config/emailjs'
 const Contact = () => {
   const [animate, setAnimate] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'spam'>('idle');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
+  
+  // Spam prevention states
+  const [honeypot, setHoneypot] = useState(''); // Hidden field to catch bots
+  const [formStartTime, setFormStartTime] = useState<number>(0);
+  const [lastSubmissionTime, setLastSubmissionTime] = useState<number>(0);
+  
   const contactRef = useRef<HTMLElement>(null);
 
   // Intersection Observer for scroll animations
@@ -41,6 +47,62 @@ const Contact = () => {
     };
   }, []);
 
+  // Initialize form start time for spam detection
+  useEffect(() => {
+    setFormStartTime(Date.now());
+  }, []);
+
+  // Spam detection functions
+  const detectSpam = (text: string): boolean => {
+    const spamPatterns = [
+      /(.)\1{4,}/i, // Repeated characters (5 or more)
+      /\b(buy now|click here|make money|free money|earn \$|get rich|miracle|guarantee|risk free)\b/i,
+      /\b(viagra|cialis|pharmacy|casino|poker|lottery|winner)\b/i,
+      /(http|https|www\.)/i, // URLs
+      /[A-Z]{10,}/, // Excessive caps
+      /(.)\1{2,}/g // Repeated patterns
+    ];
+    
+    return spamPatterns.some(pattern => pattern.test(text));
+  };
+
+  const validateSubmission = (): { isValid: boolean; reason?: string } => {
+    const now = Date.now();
+    
+    // Check honeypot (bots fill hidden fields)
+    if (honeypot.trim() !== '') {
+      return { isValid: false, reason: 'Bot detected' };
+    }
+    
+    // Check if form was filled too quickly (less than 3 seconds)
+    if (formStartTime && (now - formStartTime) < 3000) {
+      return { isValid: false, reason: 'Form submitted too quickly' };
+    }
+    
+    // Check rate limiting (max 1 submission per 30 seconds)
+    if (lastSubmissionTime && (now - lastSubmissionTime) < 30000) {
+      return { isValid: false, reason: 'Please wait before submitting again' };
+    }
+    
+    // Check for spam content
+    const fullText = `${formData.name} ${formData.email} ${formData.message}`;
+    if (detectSpam(fullText)) {
+      return { isValid: false, reason: 'Spam content detected' };
+    }
+    
+    // Check minimum message length
+    if (formData.message.trim().length < 10) {
+      return { isValid: false, reason: 'Message too short' };
+    }
+    
+    // Check maximum message length
+    if (formData.message.length > 2000) {
+      return { isValid: false, reason: 'Message too long' };
+    }
+    
+    return { isValid: true };
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -55,6 +117,22 @@ const Contact = () => {
     setSubmitStatus('idle');
 
     try {
+      // Spam validation
+      const validation = validateSubmission();
+      if (!validation.isValid) {
+        console.log('Spam detected:', validation.reason);
+        setSubmitStatus('spam');
+        setIsSubmitting(false);
+        
+        // Reset status after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus('idle');
+        }, 5000);
+        return;
+      }
+
+      // Update last submission time for rate limiting
+      setLastSubmissionTime(Date.now());
       
       const USE_EMAILJS = true; 
       
@@ -176,6 +254,20 @@ This message was sent from your portfolio contact form.`;
               />
             </div>
 
+            {/* Honeypot field - hidden from users, catches bots */}
+            <div className="honeypot-field" style={{ display: 'none' }}>
+              <label htmlFor="website">Website (leave blank)</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <button 
               type="submit" 
               className={`submit-button ${animate ? 'animate-submit-button' : ''} ${isSubmitting ? 'loading' : ''}`}
@@ -193,7 +285,13 @@ This message was sent from your portfolio contact form.`;
             
             {submitStatus === 'error' && (
               <div className="status-message error-message">
-                Error sending message. Please try again or contact me directly at lance.antor@gmail.com
+                Error sending message. Please try again or contact me directly at lanceantorpro@gmail.com
+              </div>
+            )}
+            
+            {submitStatus === 'spam' && (
+              <div className="status-message spam-message">
+                Message blocked. Please do not include spammy content.
               </div>
             )}
           </form>
