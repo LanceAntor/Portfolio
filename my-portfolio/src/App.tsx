@@ -3,6 +3,7 @@ import HomePage from './components/HomePage'
 import AboutMe from './components/AboutMe'
 import Projects from './components/Projects'
 import TechStack from './components/TechStack'
+import Contact from './components/Contact'
 import ParticleBackground from './components/ParticleBackground'
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
       </section>
       <section id="skills">
         <TechStack />
+      </section>
+      <section id="contact">
+        <Contact />
       </section>
     </div>
   )

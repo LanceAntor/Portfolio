@@ -1694,3 +1694,317 @@ body {
     font-size: 0.5rem;
   }
 }
+
+/* Contact Section */
+.contact-section {
+  min-height: 100vh;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  margin-top: 100px;
+}
+
+.contact-container {
+  max-width: 1400px;
+  width: 100%;
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-content {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+/* Contact Title with Gaming Decorations */
+.contact-title-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.contact-title {
+  font-family: 'VT323', monospace;
+  font-size: 4rem;
+  font-weight: normal;
+  color: #00ff41;
+  text-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+  letter-spacing: 3px;
+  margin: 0;
+  text-align: center;
+}
+
+.contact-subtitle {
+  font-family: 'VT323', monospace;
+  font-size: 1.4rem;
+  color: #e0e0e0;
+  margin: 5px 0 40px 0;
+  letter-spacing: 1px;
+  text-align: center;
+  line-height: 1.4;
+  
+}
+
+/* Pixel Art Decorations */
+.pixel-decoration {
+  font-family: 'VT323', monospace;
+  font-size: 3rem;
+  color: #00ff41;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+  animation: pixelGlow 2s ease-in-out infinite alternate;
+}
+
+
+
+/* Form Container */
+.contact-form-container {
+  background: transparent;
+  border: 3px solid rgba(0, 255, 65, 0.3);
+  border-radius: 20px;
+  width: 80%;
+  padding: 50px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 255, 65, 0.2);
+}
+
+
+/* Form Styling */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.form-group.full-width {
+  flex: none;
+}
+
+.form-label {
+  font-family: 'VT323', monospace;
+  font-size: 1.4rem;
+  color: #00ff41;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.form-input,
+.form-textarea {
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(0, 255, 65, 0.3);
+  border-radius: 10px;
+  color: #e0e0e0;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(224, 224, 224, 0.5);
+  font-family: 'VT323', monospace;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #00ff41;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Submit Button */
+.submit-button {
+  font-family: 'VT323', monospace;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 18px 40px;
+  background: #00ff41;
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-top: 10px;
+  align-self: center;
+  min-width: 200px;
+}
+
+.submit-button:hover {
+  background: #00cc33;
+  transform: translateY(-3px);
+}
+
+
+/* Retro Gaming Elements */
+.gaming-decoration {
+  position: absolute;
+  font-family: 'VT323', monospace;
+  color: rgba(0, 255, 65, 0.6);
+  pointer-events: none;
+  animation: float 3s ease-in-out infinite;
+}
+
+
+
+
+.gaming-decoration.top-left {
+  top: 15px;
+  left: 15px;
+  font-size: 2rem;
+}
+
+.gaming-decoration.top-right {
+  top: 15px;
+  right: 15px;
+  font-size: 2rem;
+  animation-delay: -1s;
+}
+
+.gaming-decoration.bottom-left {
+  bottom: 15px;
+  left: 15px;
+  font-size: 2rem;
+  animation-delay: -2s;
+}
+
+.gaming-decoration.bottom-right {
+  bottom: 15px;
+  right: 15px;
+  font-size: 2rem;
+  animation-delay: -0.5s;
+}
+
+/* Contact Animation Classes */
+.contact-title-container,
+.contact-form-container,
+.contact-title,
+.contact-subtitle {
+  opacity: 0;
+}
+
+.animate-contact-title {
+  animation: slideInDown 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+}
+
+.animate-contact-subtitle {
+  animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+}
+
+.animate-contact-form {
+  animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
+}
+
+/* Contact Responsive Design */
+@media (max-width: 1200px) {
+  .contact-container {
+    padding: 0 60px;
+  }
+  
+  .contact-title {
+    font-size: 4rem;
+  }
+  
+  .contact-form-container {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 968px) {
+  .contact-container {
+    padding: 0 40px;
+  }
+  
+  .contact-title {
+    font-size: 3.5rem;
+  }
+  
+  .contact-title-container {
+    gap: 20px;
+  }
+  
+  .pixel-decoration {
+    font-size: 2.5rem;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  .contact-form-container {
+    padding: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 0 20px;
+  }
+  
+  .contact-title {
+    font-size: 2.8rem;
+  }
+  
+  .contact-title-container {
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+  
+  .pixel-decoration {
+    font-size: 2rem;
+  }
+  
+  .contact-form-container {
+    padding: 25px;
+  }
+  
+  .form-label {
+    font-size: 1.2rem;
+  }
+  
+  .form-input,
+  .form-textarea {
+    font-size: 1.1rem;
+    padding: 12px 15px;
+  }
+  
+  .submit-button {
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    min-width: 180px;
+  }
+  
+  .gaming-decoration {
+    font-size: 1.5rem;
+  }
+}
