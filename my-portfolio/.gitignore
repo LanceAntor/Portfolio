@@ -29,7 +29,3 @@ dist-ssr
 .env.development.local
 .env.test.local
 .env.production.local
-
-# EmailJS configuration (contains sensitive keys)
-src/config/emailjs.ts
-src/config/emailjs.js
