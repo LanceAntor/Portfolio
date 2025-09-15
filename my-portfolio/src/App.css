@@ -2008,3 +2008,150 @@ body {
     font-size: 1.5rem;
   }
 }
+
+/* Footer Section */
+.footer-section {
+  background: transparent;
+  padding: 60px 0 0 0;
+  margin-top: 80px;
+  position: relative;
+}
+
+.footer-container {
+  width: 100%;
+}
+
+.footer-content {
+  position: relative;
+  background: transparent;
+  border-top: 2px solid rgba(0, 255, 65, 0.3);
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* Copyright Section */
+.footer-copyright {
+  padding-top: 8px;
+}
+
+.copyright-line {
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.pixel-bullet {
+  color: #00ff41;
+  animation: pixelPulse 2s ease-in-out infinite;
+}
+
+
+
+
+
+
+/* Footer Responsive Design */
+@media (max-width: 1200px) {
+  .footer-container {
+    padding: 0 60px;
+  }
+  
+  .footer-name {
+    font-size: 2.5rem;
+  }
+  
+  .footer-tagline {
+    font-size: 1.2rem;
+  }
+  
+  .footer-content {
+    padding: 35px;
+  }
+}
+
+@media (max-width: 968px) {
+  .footer-container {
+    padding: 0 40px;
+  }
+  
+  .footer-name {
+    font-size: 2.2rem;
+  }
+  
+  .footer-tagline {
+    font-size: 1.1rem;
+  }
+  
+  .footer-social {
+    gap: 20px;
+  }
+  
+  .footer-content {
+    padding: 30px;
+  }
+  
+  .footer-decoration {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-section {
+    padding: 40px 0 30px 0;
+    margin-top: 60px;
+  }
+  
+  .footer-container {
+    padding: 0 20px;
+  }
+  
+  .footer-name {
+    font-size: 2rem;
+  }
+  
+  .footer-tagline {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+  
+  .footer-social {
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+  
+  .footer-social a {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .footer-social img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .footer-content {
+    padding: 25px;
+  }
+  
+  .footer-decoration {
+    font-size: 1.2rem;
+  }
+  
+  .copyright-line {
+    font-size: 1rem;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .footer-quote {
+    font-size: 0.9rem;
+  }
+}

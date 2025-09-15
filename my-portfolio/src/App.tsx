@@ -4,6 +4,7 @@ import AboutMe from './components/AboutMe'
 import Projects from './components/Projects'
 import TechStack from './components/TechStack'
 import Contact from './components/Contact'
+import Footer from './components/Footer'
 import ParticleBackground from './components/ParticleBackground'
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <section id="contact">
         <Contact />
       </section>
+      <Footer />
     </div>
   )
 }
