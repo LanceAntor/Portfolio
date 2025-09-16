@@ -320,8 +320,24 @@ const Projects = () => {
                       <img src={githubIcon} alt="GitHub" />
                     </a>
                   </div>
+                  
+                <button
+                    className="btn-code"
+                    onClick={() => {
+                      // Create a download link for the APK file
+                      const link = document.createElement('a');
+                      link.href = '/assets/KuripotHub.apk'; // Path to APK in public folder
+                      link.download = 'KuripotHub.apk'; // Force download with filename
+                      link.target = '_blank';
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                    }}
+                  >
+                    Download APK
+                    <img src={shareIcon} alt="Download" />
+                  </button>
                 </div>
-                
               </div>
             </div>
           </div>
