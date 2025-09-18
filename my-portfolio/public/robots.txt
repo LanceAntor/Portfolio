@@ -1,5 +1,22 @@
 User-agent: *
 Allow: /
+Crawl-delay: 1
+
+# Block sensitive areas (if any)
+Disallow: /admin/
+Disallow: /.env
+Disallow: /node_modules/
+
+# Allow important files
+Allow: /assets/
+Allow: /src/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
 
 # Sitemap
-Sitemap: https://lanceantor.vercel.app/
+Sitemap: https://lanceantor.vercel.app/sitemap.xml
