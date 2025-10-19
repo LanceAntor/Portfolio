@@ -57,8 +57,23 @@ const TechStack = () => {
     };
   }, []);
 
-  const mainTechs = techs.slice(0, techs.length - 4);
-  const bottomTechs = techs.slice(-4);
+  // Check if mobile view (using window width)
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Different distributions for mobile vs desktop
+  const mainTechs = isMobile ? techs.slice(0, 16) : techs.slice(0, techs.length - 4);
+  const bottomTechs = isMobile ? techs.slice(-2) : techs.slice(-4);
 
   return (
     <section className="tech-stack-section" ref={techStackRef}>

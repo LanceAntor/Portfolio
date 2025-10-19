@@ -1647,7 +1647,10 @@ body {
   }
   
   .tech-grid-bottom {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 12px;
+    justify-content: center;
   }
   
   .tech-icon {
@@ -1668,29 +1671,40 @@ body {
 }
 
 @media (max-width: 480px) {
+  .tech-stack-container {
+    padding: 0 15px;
+  }
+  
   .tech-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-width: 100%;
+    margin: 0 auto;
   }
   
   .tech-grid-bottom {
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    justify-content: center;
+    max-width: 50%;
+    margin: 12px auto 0;
   }
   
   .tech-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 0.6rem;
-    padding: 3px;
-    gap: 2px;
+    width: 65px;
+    height: 65px;
+    font-size: 0.65rem;
+    padding: 4px;
+    gap: 3px;
   }
   
   .tech-icon-content {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
   
   .tech-name {
-    font-size: 0.5rem;
+    font-size: 0.55rem;
   }
 }
 
