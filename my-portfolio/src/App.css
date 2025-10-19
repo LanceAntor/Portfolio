@@ -1215,6 +1215,7 @@ body {
   
   .photo-section {
     padding-left: 0;
+    order: -1; /* Put photo section first (above text) */
   }
   
   .name-title {
@@ -1223,11 +1224,20 @@ body {
   
   .role-title {
     font-size: 1.6rem;
+    margin-bottom: 25px; /* Add space below role title */
+  }
+  
+  .social-links {
+    margin-top: 15px; /* Position below role title */
+    justify-content: center; /* Center the links */
   }
   
   .profile-photo {
     width: 300px;
-    height: 400px;
+    height: 300px; /* Make it square */
+  }
+  .name-title{
+    margin-top: -150px;
   }
 
   .about-container {
@@ -1327,22 +1337,32 @@ body {
     padding: 90px 20px 30px 20px;
   }
   
+  .photo-section {
+    order: -1; /* Put photo section first (above text) */
+  }
+  
   .name-title {
     font-size: 2.5rem;
   }
   
   .role-title {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
+  }
+  
+  .social-links {
+    margin-top: -10px;
+    justify-content: center; /* Center the links */
+    gap: 7px;
   }
   
   .profile-photo {
     width: 250px;
-    height: 320px;
+    height: 250px; /* Make it square */
   }
   
   .social-links img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
 
   .about-container {
@@ -1359,7 +1379,10 @@ body {
   }
 
   .about-description {
+    margin-left: 20px;
+    width: 90%;
     font-size: 1.1rem;
+    text-align: justify;
   }
 
   .about-buttons {
@@ -1371,7 +1394,10 @@ body {
   .btn-secondary {
     width: 200px;
   }
-
+  .about-social-links {
+    justify-content: center;
+    gap: 7px;
+  }
   .about-social-links img {
     width: 40px;
     height: 40px;
@@ -2052,7 +2078,7 @@ body {
   }
   
   .contact-form-container {
-    padding: 35px;
+    padding: 15px;
   }
 }
 
@@ -2062,7 +2088,10 @@ body {
   }
   
   .contact-title {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
+  }
+  .contact-subtitle {
+    font-size: 1.2rem;
   }
   
   .contact-title-container {
@@ -2076,6 +2105,7 @@ body {
   
   .contact-form-container {
     padding: 25px;
+    width: 100%;
   }
   
   .form-label {
