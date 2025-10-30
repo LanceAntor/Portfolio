@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
+import particlesConfig from '../particles.json'
 
 const ParticleBackground = () => {
   const [init, setInit] = useState(false)
@@ -37,83 +38,82 @@ const ParticleBackground = () => {
       options={{
         background: {
           color: {
-            value: '#0D0D0D)'
+            value: '#0D0D0D'
           }
         },
         fpsLimit: 120,
         interactivity: {
           events: {
             onClick: {
-              enable: true,
-              mode: 'push'
+              enable: particlesConfig.interactivity.events.onclick.enable,
+              mode: particlesConfig.interactivity.events.onclick.mode
             },
             onHover: {
-              enable: true,
-              mode: 'repulse'
+              enable: particlesConfig.interactivity.events.onhover.enable,
+              mode: particlesConfig.interactivity.events.onhover.mode
             },
             resize: {
-              enable: true,
+              enable: particlesConfig.interactivity.events.resize,
             }
           },
           modes: {
             push: {
-              quantity: 4
+              quantity: particlesConfig.interactivity.modes.push.particles_nb
             },
             repulse: {
-              distance: 200,
-              duration: 0.4
+              distance: particlesConfig.interactivity.modes.repulse.distance
             }
           }
         },
         particles: {
           color: {
-            value: ['#a5a5a5ff']
+            value: particlesConfig.particles.color.value
           },
           links: {
-            color: '#c9c9c9ff',
-            distance: 150,
-            enable: true,
-            opacity: 0.3,
-            width: 1
+            color: particlesConfig.particles.line_linked.color,
+            distance: particlesConfig.particles.line_linked.distance,
+            enable: particlesConfig.particles.line_linked.enable,
+            opacity: particlesConfig.particles.line_linked.opacity,
+            width: particlesConfig.particles.line_linked.width
           },
           move: {
-            direction: 'none',
-            enable: true,
+            direction: particlesConfig.particles.move.direction as 'none',
+            enable: particlesConfig.particles.move.enable,
             outModes: {
-              default: 'bounce'
+              default: particlesConfig.particles.move.out_mode as 'bounce'
             },
-            random: false,
-            speed: 2,
-            straight: false
+            random: particlesConfig.particles.move.random,
+            speed: particlesConfig.particles.move.speed,
+            straight: particlesConfig.particles.move.straight
           },
           number: {
             density: {
-              enable: true,
+              enable: particlesConfig.particles.number.density.enable,
               width: 1000
             },
-            value: 70
+            value: particlesConfig.particles.number.value
           },
           opacity: {
-            value: 0.9,
+            value: particlesConfig.particles.opacity.value,
             animation: {
-              enable: true,
-              speed: 1,
-              sync: false
+              enable: particlesConfig.particles.opacity.anim.enable,
+              speed: particlesConfig.particles.opacity.anim.speed,
+              sync: particlesConfig.particles.opacity.anim.sync
             }
           },
           shape: {
-            type: 'circle'
+            type: particlesConfig.particles.shape.type as 'circle'
           },
           size: {
-            value: { min: 1, max: 5 },
+            value: particlesConfig.particles.size.value,
             animation: {
-              enable: true,
-              speed: 0.5,
-              sync: false
+              enable: particlesConfig.particles.size.anim.enable,
+              speed: particlesConfig.particles.size.anim.speed,
+              sync: particlesConfig.particles.size.anim.sync
             }
           }
         },
-        detectRetina: true
+        detectRetina: particlesConfig.retina_detect
       }}
     />
   )
