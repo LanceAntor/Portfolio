@@ -93,8 +93,26 @@ const AboutMe = () => {
           </p>
           
           <div className={`about-buttons ${animate ? 'animate-about-buttons' : ''}`}>
-            <button className="btn-primary">View CV</button>
-            <button className="btn-secondary">Contact Me</button>
+            <button 
+              className="btn-primary"
+              onClick={() => window.open('/assets/Curriculum Vitae.pdf', '_blank')}
+            >
+              View CV
+            </button>
+            <button 
+              className="btn-secondary"
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = '/assets/Curriculum Vitae.pdf';
+                link.download = 'Lance_Antor_CV.pdf';
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+            >
+              Download CV
+            </button>
           </div>
 
           <div className={`about-social-links ${animate ? 'animate-about-social' : ''}`}>
