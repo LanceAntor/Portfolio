@@ -102,16 +102,16 @@ const AboutMe = () => {
             <button 
               className="btn-secondary"
               onClick={() => {
-                const link = document.createElement('a');
-                link.href = '/assets/Curriculum Vitae.pdf';
-                link.download = 'Lance_Antor_CV.pdf';
-                link.target = '_blank';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }
               }}
             >
-              Download CV
+              Contact Me
             </button>
           </div>
 
