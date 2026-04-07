@@ -37,7 +37,7 @@ const credentials: CredentialItem[] = [
   {
     title: 'Pixel8 Training Program',
     description:
-      'Applied architecture principles for networking, compute, and storage while balancing performance, resilience, and operational simplicity.',
+      'Focused on software engineering and quality assurance by validating website performance, reliability, and user experience through systematic testing and architectural principles.',
     image: pixel8Cert,
     credentialUrl: 'https://drive.google.com/file/d/1ioM9kNCASCxXBZpPi9ImlYKycHlaLePD/view?usp=sharing',
   },
