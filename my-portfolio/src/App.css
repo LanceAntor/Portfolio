@@ -97,6 +97,14 @@ body {
   filter: invert(1);
 }
 
+.nav-icon-text {
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #e0e0e0;
+  line-height: 1;
+}
+
 /* Main Content */
 .main-content {
   min-height: 100vh;
@@ -652,6 +660,165 @@ body {
   transform: scale(1.2);
 }
 
+/* Credential Section */
+.credential-section {
+  min-height: 100vh;
+  padding: 40px 0 90px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+}
+
+.credential-header,
+.credential-grid,
+.credential-card {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-credential-section .credential-header,
+.animate-credential-section .credential-grid,
+.animate-credential-section .credential-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-credential-section .credential-card:nth-child(1) {
+  transition-delay: 0.08s;
+}
+
+.animate-credential-section .credential-card:nth-child(2) {
+  transition-delay: 0.16s;
+}
+
+.animate-credential-section .credential-card:nth-child(3) {
+  transition-delay: 0.24s;
+}
+
+.animate-credential-section .credential-card:nth-child(4) {
+  transition-delay: 0.32s;
+}
+
+.credential-container {
+  width: min(1200px, 92vw);
+  position: relative;
+  z-index: 2;
+}
+
+.credential-header {
+  margin-bottom: 40px;
+}
+
+.credential-title {
+  font-family: 'VT323', monospace;
+  font-size: 5rem;
+  font-weight: normal;
+  margin: 0 0 6px 0;
+  text-align: center;
+  color: #00ff41;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+.credential-subtitle {
+  font-family: 'VT323', monospace;
+  font-size: 1.5rem;
+  color: #e0e0e0;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.credential-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.credential-card {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 2px solid #00ff41;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 390px;
+}
+
+.credential-image-wrapper {
+  height: 170px;
+  background: #f3f3f3;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.credential-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.credential-image-wrapper:hover .credential-image {
+  transform: scale(1.08);
+}
+
+.credential-content {
+  padding: 20px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.credential-name {
+  font-family: 'VT323', monospace;
+  font-size: 2.2rem;
+  color: #00ff41;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.credential-description {
+  font-family: 'VT323', monospace;
+  color: #e0e0e0;
+  font-size: 1rem;
+  line-height: 1.35;
+  margin: 0;
+  min-height: 74px;
+  display: block;
+}
+
+.credential-link {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  background: #00ff41;
+  color: #000;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-family: 'VT323', monospace;
+  font-size: 1.3rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.credential-link img {
+  width: 14px;
+  height: 14px;
+}
+
+.credential-link:hover {
+  background: #00cc33;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 255, 65, 0.3);
+}
+
 /* Projects Section */
 .projects-section {
   min-height: 140vh;
@@ -1043,6 +1210,48 @@ body {
 
 /* Projects Section Mobile Responsive */
 @media (max-width: 768px) {
+  .credential-title {
+    font-size: 3rem;
+  }
+
+  .credential-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 28px;
+    padding: 0 10px;
+  }
+
+  .credential-header {
+    margin-bottom: 28px;
+  }
+
+  .credential-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .credential-image-wrapper {
+    height: 150px;
+  }
+
+  .credential-content {
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .credential-name {
+    font-size: 1.8rem;
+  }
+
+  .credential-description {
+    font-size: 0.95rem;
+    min-height: auto;
+  }
+
+  .credential-link {
+    font-size: 1.1rem;
+    padding: 7px 12px;
+  }
+
   .projects-section {
     padding: 50px 0;
   }

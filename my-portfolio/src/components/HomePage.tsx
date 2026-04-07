@@ -113,6 +113,9 @@ const HomePage = () => {
         <div className="nav-icon" onClick={() => scrollToSection('about')}>
           <img src={aboutIcon} alt="About" />
         </div>
+        <div className="nav-icon nav-icon-text" onClick={() => scrollToSection('credentials')}>
+          C
+        </div>
         
         <div className="nav-icon" onClick={() => scrollToSection('projects')}>
           <img src={projectIcon} alt="Projects" />

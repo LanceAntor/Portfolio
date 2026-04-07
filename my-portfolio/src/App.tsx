@@ -1,6 +1,7 @@
 import './App.css'
 import HomePage from './components/HomePage'
 import AboutMe from './components/AboutMe'
+import Credential from './components/Credential'
 import Projects from './components/Projects'
 import TechStack from './components/TechStack'
 import Contact from './components/Contact'
@@ -16,6 +17,9 @@ function App() {
       </section>
       <section id="about">
         <AboutMe />
+      </section>
+      <section id="credentials">
+        <Credential />
       </section>
       <section id="projects">
         <Projects />
