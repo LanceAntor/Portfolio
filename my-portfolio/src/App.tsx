@@ -15,9 +15,6 @@ function App() {
       <section id="home">
         <HomePage />
       </section>
-      <section id="about">
-        <AboutMe />
-      </section>
       <section id="credentials">
         <Credential />
       </section>
@@ -26,6 +23,9 @@ function App() {
       </section>
       <section id="skills">
         <TechStack />
+      </section>
+      <section id="about">
+        <AboutMe />
       </section>
       <section id="contact">
         <Contact />

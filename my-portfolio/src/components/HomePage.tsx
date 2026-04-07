@@ -110,9 +110,7 @@ const HomePage = () => {
         <div className="nav-icon" onClick={() => scrollToSection('home')}>
           <img src={homeIcon} alt="Home" />
         </div>
-        <div className="nav-icon" onClick={() => scrollToSection('about')}>
-          <img src={aboutIcon} alt="About" />
-        </div>
+        
         <div className="nav-icon nav-icon-text" onClick={() => scrollToSection('credentials')}>
           C
         </div>
@@ -122,6 +120,9 @@ const HomePage = () => {
         </div>
         <div className="nav-icon" onClick={() => scrollToSection('skills')}>
           <img src={skillIcon} alt="Skills" />
+        </div>
+        <div className="nav-icon" onClick={() => scrollToSection('about')}>
+          <img src={aboutIcon} alt="About" />
         </div>
         <div className="nav-icon" onClick={() => scrollToSection('contact')}>
           <img src={contactIcon} alt="Contact" />
