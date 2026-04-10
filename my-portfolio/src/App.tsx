@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { motion } from 'motion/react'
 import './App.css'
 import HomePage from './components/HomePage'
 import AboutMe from './components/AboutMe'
@@ -10,6 +11,9 @@ import Footer from './components/Footer'
 import ParticleBackground from './components/ParticleBackground'
 import LoadingScreen from './components/LoadingScreen'
 
+const LOADING_DURATION_MS = 5000
+const ZOOM_TRANSITION_MS = 900
+
 function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [isDiving, setIsDiving] = useState(false)
@@ -17,11 +21,11 @@ function App() {
   useEffect(() => {
     const startDiveTimer = window.setTimeout(() => {
       setIsDiving(true)
-    }, 2200)
+    }, LOADING_DURATION_MS)
 
     const endLoaderTimer = window.setTimeout(() => {
       setIsLoading(false)
-    }, 3050)
+    }, LOADING_DURATION_MS + ZOOM_TRANSITION_MS)
 
     return () => {
       window.clearTimeout(startDiveTimer)
@@ -34,7 +38,12 @@ function App() {
   }
 
   return (
-    <div className="portfolio-container">
+    <motion.div
+      className="portfolio-container"
+      initial={{ opacity: 0, scale: 1.06 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+    >
       <ParticleBackground />
       <section id="home">
         <HomePage />
@@ -55,7 +64,7 @@ function App() {
         <Contact />
       </section>
       <Footer />
-    </div>
+    </motion.div>
   )
 }
 
