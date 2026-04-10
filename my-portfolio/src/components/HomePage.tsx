@@ -123,7 +123,7 @@ const HomePage = () => {
         </div>
         <div className="nav-icon" onClick={() => scrollToSection('about')}>
           <img src={aboutIcon} alt="About" />
-        </div>
+        </div>~
         <div className="nav-icon" onClick={() => scrollToSection('contact')}>
           <img src={contactIcon} alt="Contact" />
         </div>
