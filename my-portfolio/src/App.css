@@ -28,12 +28,20 @@ body {
 .loading-screen {
   position: fixed;
   inset: 0;
-  background: #060606;
+  background: #0D0D0D;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10000;
   overflow: hidden;
+  isolation: isolate;
+}
+
+.loading-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .loading-brand {
@@ -43,6 +51,7 @@ body {
   font-size: clamp(7rem, 20vw, 18rem);
   line-height: 0.9;
   letter-spacing: 0.06em;
+  z-index: 2;
 }
 
 .loading-brand-outline,
