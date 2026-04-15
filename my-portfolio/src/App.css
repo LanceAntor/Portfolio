@@ -2614,3 +2614,16 @@ body {
     font-size: 0.9rem;
   }
 }
+
+.loading-brand-fill {
+  animation: diagonalFill 5s linear forwards;
+}
+
+@keyframes diagonalFill {
+  0% {
+    clip-path: inset(100% 0 0 100%);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
