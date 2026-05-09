@@ -8,6 +8,7 @@ Disallow: /.env
 Disallow: /node_modules/
 
 # Allow important files
+Sitemap: https://lanceantor.vercel.app/sitemap.xml
 Allow: /assets/
 Allow: /src/
 Allow: /*.css$
